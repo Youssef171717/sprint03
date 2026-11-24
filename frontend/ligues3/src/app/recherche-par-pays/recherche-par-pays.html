@@ -1,0 +1,82 @@
+<div class="container">
+
+  <h2 class="mt-4 mb-4">Recherche par Pays</h2>
+
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+
+    <label>Pays</label>
+
+    <select 
+      class="form-control form-control-lg"
+      id="idPays"
+      name="idPays"
+      [(ngModel)]="idPays"
+      (change)="onChange()">
+
+      @for (p of lesPays; track p.idPays) {
+
+        <option [value]="p.idPays">
+          {{ p.nomPays }}
+        </option>
+
+      }
+
+    </select>
+
+  </div>
+
+
+  <div class="card shadow mb-4">
+
+    <div class="card-body">
+
+      <table class="table table-striped">
+
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Nb Équipes</th>
+            <th>Date Création</th>
+            <th>Pays</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          @for (ligue of ligues; track ligue.idLigue) {
+
+            <tr>
+
+              <td>{{ ligue.idLigue }}</td>
+
+              <td>{{ ligue.nomLigue }}</td>
+
+              <td>{{ ligue.nbEquipes }}</td>
+
+              <td>
+                {{ ligue.dateCreation | date:'dd/MM/yyyy' }}
+              </td>
+
+              <td>
+                @if (ligue.pays) {
+                  {{ ligue.pays.nomPays }}
+                }
+                @else {
+                  PAS DE PAYS
+                }
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

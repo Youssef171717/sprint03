@@ -1,0 +1,31 @@
+<div class="container">
+    <div>
+        <h2>Ajouter une Ligue :</h2>
+    </div>
+    <form>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Ligue</label>
+            <input type="text" [(ngModel)]="newLigue.nomLigue" name="nomLigue" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Nb Équipes</label>
+            <input type="number" [(ngModel)]="newLigue.nbEquipes" name="nbEquipes" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date création</label>
+            <input type="date" [(ngModel)]="newLigue.dateCreation" name="dateCreation" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Pays</label>
+        <select class="form-control form-control-lg" id="idPays" name="idPays" [(ngModel)]="newIdPays">
+            @for (p of lesPays; track p.idPays) {
+            <option [value]="p.idPays">{{p.nomPays}}</option>
+            }
+        </select>
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="addLigue()" class="btn btn-success">Ajouter</button>
+        </div> 
+        <div><h3>{{message}}</h3></div>
+    </form>
+</div>

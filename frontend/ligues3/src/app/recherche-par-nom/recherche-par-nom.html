@@ -1,0 +1,97 @@
+<div class="container">
+
+  <h2 class="mt-4 mb-4">
+    Recherche par Nom
+  </h2>
+  
+ <form class="form-inline">
+
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+
+      <label>Nom Ligue</label>
+
+      <input
+        #nom
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+        class="form-control"
+        placeholder="Rechercher..."
+      >
+
+    </div>
+
+  </form>
+
+ <!--  <form class="form-inline">
+
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+
+      <label>Nom Ligue</label>
+
+      <input
+        class="form-control"
+        #searchTerm
+        (keyup)="onKeyUp(searchTerm.value)"
+        placeholder="Rechercher..."
+      >
+
+    </div>
+
+  </form> -->
+
+
+  <div class="card shadow mb-4">
+
+    <div class="card-body">
+
+      <table class="table table-striped">
+
+        <thead>
+
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Nb Équipes</th>
+            <th>Date Création</th>
+            <th>Pays</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          @for (
+            ligue of ligues | searchFilter: searchTerm;
+            track ligue.idLigue
+          ) {
+
+            <tr>
+
+              <td>{{ ligue.idLigue }}</td>
+
+              <td>{{ ligue.nomLigue }}</td>
+
+              <td>{{ ligue.nbEquipes }}</td>
+
+              <td>
+                {{ ligue.dateCreation | date:'dd/MM/yyyy' }}
+              </td>
+
+              <td>
+                {{ ligue.pays.nomPays }}
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
